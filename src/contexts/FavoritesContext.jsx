@@ -1,14 +1,14 @@
 import React, {createContext, useContext} from 'react'
 import useFavorites from '../hook/useFavorites'
-import { Children } from 'react'
+import { children } from 'react'
 const FavoritesContext = createContext(null)
  
-export const FavoritesProvider = ({Children}) =>{
+export const FavoritesProvider = ({children}) =>{
     const value = useFavorites()
 
     return(
         <FavoritesContext.Provider value={value}>
-            {Children}
+            {children}
         </FavoritesContext.Provider>
     )
 }

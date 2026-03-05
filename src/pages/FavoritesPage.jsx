@@ -4,16 +4,16 @@ import { useFavoritesContext } from '../contexts/FavoritesContext'
 
 const FavoritesPage = () => {
 
-  const {Favorites, remove}= useFavoritesContext()
+  const {favorites, remove}= useFavoritesContext()
   return (
     <div className='rounded-2xl border bg-white p-6 shadow-sm'>
         <h1 className='text-lg fonst-semibold'>Favorits</h1>
         <p className='mt-2 text-sm text-slate-600'>
-          {Favorites.length>0 ? `총 ${Favorites.length}개의 즐겨 찾기`:'즐겨찾기 한 장소가 없습니다.'}
+          {favorites.length>0 ? `총 ${favorites.length}개의 즐겨 찾기`:'즐겨찾기 한 장소가 없습니다.'}
         </p>
-        {Favorites.length>0 &&(
+        {favorites.length>0 &&(
           <ul className='mt-4 space-y-2. max-h[60vh] overflow-auto'>
-            {Favorites.map((item, idx)=> (
+            {favorites.map((item, idx)=> (
               <li key={idx}
                  className='flex-items-start justify-between gap-3 rounded-xl border p-3
                  hover:bg-slate-50'
@@ -30,11 +30,11 @@ const FavoritesPage = () => {
                 </div>
                 </div>
                 <div>
-                  <link
+                  <Link
                   className='text-xs text-slate-600 hover:text-slate-900 underline'
                   to='/map'
                   state={{selectedSpot:item}}
-                  >지도보기</link>
+                  >지도보기</Link>
                   <button 
                   className='text-lg cursor-pointer select-all'
                   onClick={()=>remove(item)}>
